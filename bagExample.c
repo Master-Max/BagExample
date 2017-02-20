@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 int a;
 main(){
@@ -65,8 +66,7 @@ menu(){
 }
 /*NODE Fuction*/
 struct node(){
-	int data;
-	int key;
+	char data[10];
 	struct node *next;
 };
 
@@ -74,19 +74,37 @@ struct node *head = NULL;
 struct node *current = NULL;
 
 int getSize(){/*1 on menu*/
+	int length = 0;
+	struct node *current;
+	for(current = head; current != NULL; current->next){
+		length++
+	}
 
+	return length;
 }
 void isFull(){/*2 on menu*/
-
+	printf("Can't Be Full\n");
 }
-void isEmpty(){/*3 on menu*/
-
+bool isEmpty(){/*3 on menu*/
+	return head == NULL;
 }
-void add(){/*4 on menu*/
+void add(char data[]){/*4 on menu*/
+	struct node *link = (struct node*) malloc(sizeof(struct node));
 
+	link->data = data;//do i need [] on first data?
+
+	link->next = head;
+
+	head = link;
 }
-void remove(){/*5 on menu*/
+struct node* remove(){/*5 on menu*/
+	struct node* current = head;
 
+	if(head == NULL){
+		return NULL;
+	}
+
+	while(current->data != data)
 }
 void printList(){/*6 on menu*/
 
@@ -107,7 +125,11 @@ void firstAndLast(){/*11 on menu*/
 
 }
 void initilizeWith(){/*12 on menu*/
-
+	add("Dog");
+	add("Cat");
+	add("Fish");
+	add("Rabbit");
+	add("Cow");
 }
 struct node* removeSecond(){/*13 on menu*/
 
